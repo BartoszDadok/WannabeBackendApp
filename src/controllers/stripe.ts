@@ -36,7 +36,7 @@ export const postBuyReact = async (
 
         // Initiate payment
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: 1000,
+            amount: 500,
             currency: "USD",
             payment_method_types: ["card"],
             metadata: { id, email, languageName },
