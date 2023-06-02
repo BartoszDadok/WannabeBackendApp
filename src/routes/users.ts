@@ -8,6 +8,7 @@ import {
     postCreateUser, postDeleteAccount,
     postResetPassword,
     postSignInUser,
+    getAllLanguages
 } from "../controllers/users";
 import { isValidateNewUser } from "../middleware/isValidateNewUser";
 import { isValidateUser } from "../middleware/isValidateUser";
@@ -31,6 +32,6 @@ router.get("/resend-verification-link/:token", getResendVerificationLink);
 
 router.post("/delete-account", isAuth, postDeleteAccount);
 
-
+router.get("/allLanguages", isAuth, getAllLanguages);
 
 export = router;

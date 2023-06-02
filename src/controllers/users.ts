@@ -292,7 +292,7 @@ export const postResetPassword = async (
     next: NextFunction,
 ) => {
     const email = req.body.email;
-    if(!email){
+    if (!email) {
         return res.status(404).json({ success: false, message: "No email found" });
     }
 
@@ -469,11 +469,10 @@ export const getChangePasswordSuccess = async (
 };
 
 
-
 export const postDeleteAccount = async (req: CustomRequest, res: Response, next: NextFunction) => {
     const userID = req.body.id;
 
-    if(!req.user){
+    if (!req.user) {
         return res.status(404).json({ success: false, message: "No user found!" });
     }
     const id = req.user.id.valueOf();
@@ -481,11 +480,30 @@ export const postDeleteAccount = async (req: CustomRequest, res: Response, next:
         return res.status(400).json({ success: false, errors: ["You are not allowed to delete this user!"] });
     }
     try {
-        await UsersModel.findByIdAndDelete(id);
+        const user = await UsersModel.findByIdAndDelete(id);
+        if (!user)
+            return res.status(404).json({ success: false, message: "User not found" });
         return res.status(201).json({ success: true, message: "Account deleted successfully" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Internal Server Error" });
     }
+
+};
+
+export const getAllLanguages = async (
+    req: CustomRequest,
+    res: Response,
+    next: NextFunction,
+) => {
+    if (!req.user) {
+        return res.status(404).json({ success: false, message: "No user found!" });
+    }
+    const userID = req.user.id;
+    const user = await UsersModel.findById(userID);
+    if (!user)
+        return res.status(404).json({ success: false, message: "User not found" });
+
+    return res.status(200).json({ languages: user.languages });
 
 };
