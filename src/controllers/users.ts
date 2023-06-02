@@ -501,10 +501,10 @@ export const getAllLanguages = async (
     }
     const userID = req.user.id;
     const user = await UsersModel.findOne({ _id: userID });
-    console.log(user);
+
     if (!user)
         return res.status(404).json({ success: false, message: "User not found" });
-
+    console.log(user.languages);
     return res.status(200).json({ languages: user.languages });
 
 };
