@@ -505,6 +505,6 @@ export const getAllLanguages = async (
     if (!user)
         return res.status(404).json({ success: false, message: "User not found" });
     console.log(user.languages);
-    return res.status(200).json({ languages: user.languages });
+    return res.status(200).json({ id: user.id, email: user.email, languages: user.languages });
 
 };
