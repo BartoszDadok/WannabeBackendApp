@@ -500,7 +500,7 @@ export const getAllLanguages = async (
         return res.status(404).json({ success: false, message: "No user found!" });
     }
     const userID = req.user.id;
-    const user = await UsersModel.findById(userID);
+    const user = await UsersModel.findOne({ _id: userID });
     console.log(user);
     if (!user)
         return res.status(404).json({ success: false, message: "User not found" });
