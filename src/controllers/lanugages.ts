@@ -92,10 +92,11 @@ export const postAddFlashcards = async (req: Request, res: Response, next: NextF
     try {
         const foundLanguage = await LanguagesModel.findOne({ language: language });
         if (!foundLanguage) return res.status(400).json({ success: false, message: "Language not found" });
-        // Check if id exist, if so, return
         const newFlashcardId = newFlashcard.id;
-        console.log(newFlashcardId)
-        console.log(foundLanguage);
+
+        const cardWithThisIDAlreadyExist = foundLanguage.flashcards.find(flashcard => flashcard.id === newFlashcardId);
+        if (cardWithThisIDAlreadyExist) return res.status(400).json({ success: false, message: "Flashcard already exist" });
+
         const flashCardsToUpdate = [...foundLanguage.flashcards, newFlashcard];
         const updatedFlashcards = await LanguagesModel.updateOne({ language: req.body.language }, { flashcards: flashCardsToUpdate });
         if (!updatedFlashcards)
