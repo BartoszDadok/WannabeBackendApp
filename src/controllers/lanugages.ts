@@ -6,7 +6,7 @@ export const getJavascriptFlashcards = async (req: Request, res: Response, next:
     try {
         const jsObject = await LanguagesModel.findOne({ language: "javascript" });
         console.log(jsObject);
-        if (!jsObject) return res.status(400).json({ success: false, errors:["Javascript flashcards not found!"] });
+        if (!jsObject) return res.status(400).json({ success: false, errors: ["Javascript flashcards not found!"] });
 
         return res.status(201).json({ success: true, data: jsObject.flashcards });
     } catch (err) {
@@ -19,7 +19,7 @@ export const getJavascriptFlashcards = async (req: Request, res: Response, next:
 export const getHTMLFlashcards = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const jsObject = await LanguagesModel.findOne({ language: "html" });
-        if (!jsObject) return res.status(400).json({ success: false, errors:["Javascript flashcards not found!"] });
+        if (!jsObject) return res.status(400).json({ success: false, errors: ["Javascript flashcards not found!"] });
 
         return res.status(201).json({ success: true, data: jsObject.flashcards });
     } catch (err) {
@@ -32,7 +32,7 @@ export const getHTMLFlashcards = async (req: Request, res: Response, next: NextF
 export const getCSSFlashcards = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const jsObject = await LanguagesModel.findOne({ language: "css" });
-        if (!jsObject) return res.status(400).json({ success: false, errors:["Javascript flashcards not found!"] });
+        if (!jsObject) return res.status(400).json({ success: false, errors: ["Javascript flashcards not found!"] });
 
         return res.status(201).json({ success: true, data: jsObject.flashcards });
     } catch (err) {
@@ -43,7 +43,7 @@ export const getCSSFlashcards = async (req: Request, res: Response, next: NextFu
 };
 
 export const getReactFlashcards = async (req: CustomRequest, res: Response, next: NextFunction) => {
-    if(!req.user){
+    if (!req.user) {
         return res.status(404).json({ success: false, message: "No user found!" });
     }
     const userLanguages = req.user.languages;
@@ -53,7 +53,7 @@ export const getReactFlashcards = async (req: CustomRequest, res: Response, next
     });
     try {
         const reactObject = await LanguagesModel.findOne({ language: "react" });
-        if (!reactObject) return res.status(400).json({ success: false, errors:[ "React flashcards not found!"] });
+        if (!reactObject) return res.status(400).json({ success: false, errors: ["React flashcards not found!"] });
 
         return res.status(200).json({ success: true, data: reactObject.flashcards });
     } catch (err) {
@@ -64,7 +64,7 @@ export const getReactFlashcards = async (req: CustomRequest, res: Response, next
 };
 
 export const getTypeScriptFlashcards = async (req: CustomRequest, res: Response, next: NextFunction) => {
-    if(!req.user){
+    if (!req.user) {
         return res.status(404).json({ success: false, message: "No user found!" });
     }
     const userLanguages = req.user.languages;
@@ -75,7 +75,7 @@ export const getTypeScriptFlashcards = async (req: CustomRequest, res: Response,
     try {
 
         const reactObject = await LanguagesModel.findOne({ language: "react" });
-        if (!reactObject) return res.status(400).json({ success: false, errors:[ "React flashcards not found!"] });
+        if (!reactObject) return res.status(400).json({ success: false, errors: ["React flashcards not found!"] });
 
         return res.status(200).json({ success: true, data: reactObject.flashcards });
     } catch (err) {
@@ -92,7 +92,10 @@ export const postAddFlashcards = async (req: Request, res: Response, next: NextF
     try {
         const foundLanguage = await LanguagesModel.findOne({ language: language });
         if (!foundLanguage) return res.status(400).json({ success: false, message: "Language not found" });
-
+        // Check if id exist, if so, return
+        const newFlashcardId = newFlashcard.id;
+        console.log(newFlashcardId)
+        console.log(foundLanguage);
         const flashCardsToUpdate = [...foundLanguage.flashcards, newFlashcard];
         const updatedFlashcards = await LanguagesModel.updateOne({ language: req.body.language }, { flashcards: flashCardsToUpdate });
         if (!updatedFlashcards)

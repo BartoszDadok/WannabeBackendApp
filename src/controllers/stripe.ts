@@ -22,7 +22,7 @@ export const getStripePublishableKey = async (
         .json({ publishableStripeKey: process.env.PUBLISHABLE_STRIPE_KEY });
 };
 
-export const postBuyReact = async (
+export const postPayment = async (
     req: Request,
     res: Response,
     next: NextFunction,
