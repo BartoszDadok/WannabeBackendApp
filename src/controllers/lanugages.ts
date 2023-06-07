@@ -5,7 +5,6 @@ import { CustomRequest } from "../types/customRequest";
 export const getJavascriptFlashcards = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const jsObject = await LanguagesModel.findOne({ language: "javascript" });
-        console.log(jsObject);
         if (!jsObject) return res.status(400).json({ success: false, errors: ["Javascript flashcards not found!"] });
 
         return res.status(201).json({ success: true, data: jsObject.flashcards });

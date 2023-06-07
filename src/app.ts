@@ -34,7 +34,6 @@ app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     const data = error.data;
     res.status(status).json({ message: message, data: data });
 });
-
 mongoose.set("strictQuery", false);
 mongoose.connect((process.env.MONGODB_URI_TEST as string || process.env.MONGODB_URI as string), {
     useNewUrlParser: true,
