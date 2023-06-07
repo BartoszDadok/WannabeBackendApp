@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node ./build/app.js",
-    "build": "tsc -p .",
+    "build": "npm install && rimraf ./build && tsc",
     "dev": "nodemon ./src/app.ts"
   },
   "author": "Bartosz Dadok",
