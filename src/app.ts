@@ -38,7 +38,7 @@ app.use((error: any, req: Request, res: Response, next: NextFunction) => {
 mongoose.set("strictQuery", false);
 mongoose.connect((process.env.MONGODB_URI_TEST as string || process.env.MONGODB_URI as string), {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: false,
 } as ConnectOptions)
     .then(() => {
         console.log("server is running on port 8080");
