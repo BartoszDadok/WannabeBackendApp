@@ -473,7 +473,7 @@ export const postDeleteAccount = async (req: CustomRequest, res: Response, next:
     const userID = req.body.id;
 
     if (!req.user) {
-        return res.status(404).json({ success: false, message: "No user found!" });
+        return res.status(404).json({ success: false, message: "No user found!", errors: ["No user found!"] });
     }
     const id = req.user.id.valueOf();
     if (userID !== id) {
@@ -482,7 +482,7 @@ export const postDeleteAccount = async (req: CustomRequest, res: Response, next:
     try {
         const user = await UsersModel.findByIdAndDelete(id);
         if (!user)
-            return res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ success: false, message: "User not found", errors: ["No user found!"] });
         return res.status(201).json({ success: true, message: "Account deleted successfully" });
     } catch (err) {
         console.error(err);
