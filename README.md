@@ -41,7 +41,7 @@ There are two ways to install and use the App:
 - Apple Store - https://apps.apple.com/us/app/wannabe/id6446692315
 - Play Store - https://play.google.com/store/apps/details?id=com.bartoszdadok.Wannabe
 
-2. You can install Wannabe App locally on your phone.
+2. You can install Wannabe App locally on your phone..
 
 ### Local installation on your phone:
 
