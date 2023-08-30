@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     bodyParser.json()(req, res, next);
   }
 });
-
+console.log("Works");
 app.use(userRoutes);
 app.use(languagesRoutes);
 app.use(stripeRoutes);
