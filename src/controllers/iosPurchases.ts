@@ -26,7 +26,6 @@ export const verifyIOSPurchases = async (
       errors: ["No offerings found"],
     });
   }
-  console.log(getOfferings);
 
   const offeringsIds = getOfferings.data.offerings.map((offering: any) => {
     return offering.identifier;
@@ -37,6 +36,7 @@ export const verifyIOSPurchases = async (
       errors: ["No identifiers found"],
     });
   }
+  console.log(offeringsIds);
   const paidLanguage = offeringsIds.find(
     (off: string) => off === languageName.toLowerCase()
   );
