@@ -36,7 +36,6 @@ export const verifyIOSPurchases = async (
       errors: ["No identifiers found"],
     });
   }
-  console.log(offeringsIds);
   const paidLanguage = offeringsIds.find(
     (off: string) => off === languageName.toLowerCase()
   );
@@ -47,8 +46,6 @@ export const verifyIOSPurchases = async (
       errors: ["No language found"],
     });
   }
-
-  console.log(paidLanguage);
 
   const user = await UsersModel.findById(id);
   if (!user)
