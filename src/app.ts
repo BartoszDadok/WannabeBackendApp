@@ -4,8 +4,7 @@ import mongoose, { ConnectOptions } from "mongoose";
 import bodyParser from "body-parser";
 import userRoutes from "./routes/users";
 import languagesRoutes from "./routes/languges";
-import stripeRoutes from "./routes/stripe";
-import iosRoutes from "./routes/iosPurchases";
+// import stripeRoutes from "./routes/stripe";
 import contactRoutes from "./routes/contact";
 
 dotenv.config();
@@ -21,8 +20,7 @@ app.use((req, res, next) => {
 });
 app.use(userRoutes);
 app.use(languagesRoutes);
-app.use(stripeRoutes);
-app.use(iosRoutes);
+// app.use(stripeRoutes);
 app.use(contactRoutes);
 
 app.get("/", (req, res) => {
