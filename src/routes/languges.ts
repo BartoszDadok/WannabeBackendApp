@@ -1,4 +1,13 @@
-import { postAddLanguage, getCSSFlashcards, getTypeScriptFlashcards, getHTMLFlashcards, getJavascriptFlashcards, getReactFlashcards, postAddFlashcards, postUpdateFlashcards } from "../controllers/lanugages";
+import {
+  postAddLanguage,
+  getCSSFlashcards,
+  getTypeScriptFlashcards,
+  getHTMLFlashcards,
+  getJavascriptFlashcards,
+  getReactFlashcards,
+  postAddFlashcards,
+  postUpdateFlashcards,
+} from "../controllers/lanugages";
 import { isAuth } from "../middleware/isAuth";
 import express from "express";
 import { isAdmin } from "../middleware/isAdmin";
@@ -12,7 +21,7 @@ router.post("/update-flashcards", isAuth, isAdmin, postUpdateFlashcards);
 router.get("/javascript", getJavascriptFlashcards);
 router.get("/html", getHTMLFlashcards);
 router.get("/css", getCSSFlashcards);
-router.get("/react", isAuth, getReactFlashcards);
+router.get("/react", getReactFlashcards);
 router.get("/typescript", isAuth, getTypeScriptFlashcards);
 
 export = router;
