@@ -22,6 +22,6 @@ router.get("/javascript", getJavascriptFlashcards);
 router.get("/html", getHTMLFlashcards);
 router.get("/css", getCSSFlashcards);
 router.get("/react", getReactFlashcards);
-router.get("/typescript", isAuth, getTypeScriptFlashcards);
+router.get("/typescript", getTypeScriptFlashcards);
 
 export = router;

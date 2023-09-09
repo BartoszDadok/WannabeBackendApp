@@ -105,25 +105,43 @@ export const getTypeScriptFlashcards = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (!req.user) {
-    return res.status(404).json({ success: false, message: "No user found!" });
-  }
-  const userLanguages = req.user.languages;
-  if (!userLanguages.includes("typescript"))
-    return res.status(403).json({
-      success: false,
-      errors: ["Unauthorized access to flashcards!"],
-    });
+  // if (!req.user) {
+  //   return res.status(404).json({ success: false, message: "No user found!" });
+  // }
+  // const userLanguages = req.user.languages;
+  // if (!userLanguages.includes("typescript"))
+  //   return res.status(403).json({
+  //     success: false,
+  //     errors: ["Unauthorized access to flashcards!"],
+  //   });
+  // try {
+  //   const reactObject = await LanguagesModel.findOne({ language: "react" });
+  //   if (!reactObject)
+  //     return res
+  //       .status(400)
+  //       .json({ success: false, errors: ["React flashcards not found!"] });
+
+  //   return res
+  //     .status(200)
+  //     .json({ success: true, data: reactObject.flashcards });
+  // } catch (err) {
+  //   console.error(err);
+  //   res.status(500).json({ message: "Internal Server Error" });
+  // }
+
   try {
-    const reactObject = await LanguagesModel.findOne({ language: "react" });
-    if (!reactObject)
-      return res
-        .status(400)
-        .json({ success: false, errors: ["React flashcards not found!"] });
+    const typeScriptObject = await LanguagesModel.findOne({
+      language: "typescript",
+    });
+    if (!typeScriptObject)
+      return res.status(400).json({
+        success: false,
+        errors: ["TypeScript flashcards not found!"],
+      });
 
     return res
-      .status(200)
-      .json({ success: true, data: reactObject.flashcards });
+      .status(201)
+      .json({ success: true, data: typeScriptObject.flashcards });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });
