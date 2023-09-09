@@ -10,6 +10,7 @@ export const isAuth = async (
 ) => {
   if (req.headers && req.headers.authorization) {
     const token = req.headers.authorization.split(" ")[1];
+    console.log(token);
     try {
       const decode = jwt.verify(token, process.env.JWT_SECRET as string);
       const user = await UsersModel.findById((decode as any).userId);
@@ -18,7 +19,7 @@ export const isAuth = async (
           .status(401)
           .json({ success: false, message: "Unauthorized access!" });
       }
-      console.log(user);
+
       req.user = {
         email: user.email,
         id: user._id,
