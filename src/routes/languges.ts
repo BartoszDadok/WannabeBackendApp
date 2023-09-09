@@ -7,6 +7,7 @@ import {
   getReactFlashcards,
   postAddFlashcards,
   postUpdateFlashcards,
+  getReactNativeFlashcards,
 } from "../controllers/lanugages";
 import { isAuth } from "../middleware/isAuth";
 import express from "express";
@@ -23,5 +24,6 @@ router.get("/html", getHTMLFlashcards);
 router.get("/css", getCSSFlashcards);
 router.get("/react", getReactFlashcards);
 router.get("/typescript", getTypeScriptFlashcards);
+router.get("/reactnative", getReactNativeFlashcards);
 
 export = router;

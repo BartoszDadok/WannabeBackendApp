@@ -40,6 +40,26 @@ export const getHTMLFlashcards = async (
   }
 };
 
+export const getReactNativeFlashcards = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const rnObject = await LanguagesModel.findOne({ language: "reactnative" });
+    if (!rnObject)
+      return res.status(400).json({
+        success: false,
+        errors: ["ReactNative flashcards not found!"],
+      });
+
+    return res.status(201).json({ success: true, data: rnObject.flashcards });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 export const getCSSFlashcards = async (
   req: Request,
   res: Response,
