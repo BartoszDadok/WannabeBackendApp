@@ -29,6 +29,7 @@ export const isAuth = async (
       };
       next();
     } catch (error) {
+      console.log(error);
       if ((error as any).name === "JsonWebTokenError") {
         return res
           .status(401)
