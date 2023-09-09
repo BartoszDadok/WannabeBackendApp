@@ -156,10 +156,9 @@ export const postAddFlashcards = async (
   console.log(req);
   const language = req.body.language;
   const newFlashcard = req.body.newFlashcard;
-  console.log(newFlashcard);
   try {
     const foundLanguage = await LanguagesModel.findOne({ language: language });
-    console.log(foundLanguage);
+
     if (!foundLanguage)
       return res
         .status(400)
@@ -169,7 +168,6 @@ export const postAddFlashcards = async (
     const cardWithThisIDAlreadyExist = foundLanguage.flashcards.find(
       (flashcard) => flashcard.id === newFlashcardId
     );
-    console.log(cardWithThisIDAlreadyExist);
     if (cardWithThisIDAlreadyExist)
       return res
         .status(400)
