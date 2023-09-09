@@ -15,7 +15,7 @@ import { isAdmin } from "../middleware/isAdmin";
 const router = express.Router();
 
 router.post("/add-language", isAuth, isAdmin, postAddLanguage);
-router.post("/add-flashcards", postAddFlashcards);
+router.post("/add-flashcards", isAuth, isAdmin, postAddFlashcards);
 router.post("/update-flashcards", isAuth, isAdmin, postUpdateFlashcards);
 
 router.get("/javascript", getJavascriptFlashcards);
