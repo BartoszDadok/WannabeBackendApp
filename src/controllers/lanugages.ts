@@ -153,7 +153,6 @@ export const postAddFlashcards = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req);
   const language = req.body.language;
   const newFlashcard = req.body.newFlashcard;
   try {

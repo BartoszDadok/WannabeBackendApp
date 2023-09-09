@@ -36,7 +36,7 @@ export const isAuth = async (
       if ((error as any) === "TokenExpiredError") {
         return res.json({
           success: false,
-          message: "session expired try sign in!",
+          message: "Session expired, try sign in!",
         });
       }
 
