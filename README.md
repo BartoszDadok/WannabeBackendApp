@@ -93,5 +93,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 - Email - bartoszdadok@gmail.com
-- My Youtube Channel - [Youtube](https://www.youtube.com/@wannabeIT)
 - LinkedIn - [LinkedIn](https://www.linkedin.com/in/bartoszdadok/)
