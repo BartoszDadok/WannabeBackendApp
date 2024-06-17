@@ -39,6 +39,7 @@ mongoose
     (process.env.MONGODB_URI_TEST as string) ||
       (process.env.MONGODB_URI as string),
     {
+      dbName: "FlashCards",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as ConnectOptions
